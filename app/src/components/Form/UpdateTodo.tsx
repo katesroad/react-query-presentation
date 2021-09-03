@@ -5,37 +5,39 @@ import { useGetTodo } from "hooks/queries/todos.hooks";
 import { useUpdateTodo } from "hooks/queries/todos.hooks";
 
 interface UpdateTodoFormProps {
-	id?: string;
-	onSuccess: () => void;
+  id?: string;
+  onSuccess: () => void;
 }
 
 const UpdateTodoForm: React.FC<UpdateTodoFormProps> = ({ id, onSuccess }) => {
-	const { status, data: todo } = useGetTodo(id);
+  const { status, data: todo } = useGetTodo(id);
 
-	const {mutate: onSubmit, status: updateStatus} = useUpdateTodo(todo?.user ?? "");
-	const handleSubmit = (data: ITodoData) => {
-		onSubmit({ ...todo, ...data });
-	};
+  const { mutate: onSubmit, status: updateStatus } = useUpdateTodo(
+    todo?.user ?? ""
+  );
+  const handleSubmit = (data: ITodoData) => {
+    onSubmit({ ...todo, ...data });
+  };
 
-	React.useEffect(() => {
-		if (updateStatus === 'success') {
-			onSuccess();
-		}
-	}, [updateStatus, onSuccess]);
+  React.useEffect(() => {
+    if (updateStatus === "success") {
+      onSuccess();
+    }
+  }, [updateStatus, onSuccess]);
 
-	if (["loading", "idel"].includes(status)) {
-		return <p>Loading...</p>;
-	}
+  if (["loading", "idel"].includes(status)) {
+    return <p>Loading...</p>;
+  }
 
-	if (status === "error") {
-		return <p>Failed to fetch todo data</p>;
-	}
+  if (status === "error") {
+    return <p>Failed to fetch todo data</p>;
+  }
 
-	if (status === "success") {
-		return <TodoForm initialValues={todo} onSubmit={handleSubmit} />;
-	}
+  if (status === "success") {
+    return <TodoForm initialValues={todo} onSubmit={handleSubmit} />;
+  }
 
-	return null;
+  return null;
 };
 
 export default UpdateTodoForm;

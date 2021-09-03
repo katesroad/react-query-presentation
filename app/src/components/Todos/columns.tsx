@@ -7,31 +7,26 @@ import { getTodo } from "services/todos.api";
 import { ITodo } from "types/todo";
 
 export const columns = [
-	{
-		Header: "title",
-		accessor: (data: ITodo) => {
-			const handleMouseOver = () => {
-				queryClient.prefetchQuery(
-					["todo", data._id],
-					() => getTodo(data._id)
-				);
-			};
+  {
+    Header: "title",
+    accessor: (data: ITodo) => {
+      const handleMouseOver = () => {
+        queryClient.prefetchQuery(["todo", data._id], () => getTodo(data._id));
+      };
 
-			return (
-				<Link to={`todos/${data._id}`} onMouseEnter={handleMouseOver}>
-					{data.title}
-				</Link>
-			);
-		},
-	},
-	{
-		Header: "Status",
-		accessor: (data: ITodo) => (
-			<TodoStatus todo={data} />
-		),
-	},
-	{
-		Header: "Actions",
-		Cell: ({ row: { original: todo } }: any) => <Actions todo={todo} />,
-	},
+      return (
+        <Link to={`todos/${data._id}`} onMouseEnter={handleMouseOver}>
+          {data.title}
+        </Link>
+      );
+    },
+  },
+  {
+    Header: "Status",
+    accessor: (data: ITodo) => <TodoStatus todo={data} />,
+  },
+  {
+    Header: "Actions",
+    Cell: ({ row: { original: todo } }: any) => <Actions todo={todo} />,
+  },
 ];

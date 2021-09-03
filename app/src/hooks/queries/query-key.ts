@@ -1,15 +1,15 @@
 export function getTodosKeys(user: string) {
-	return ["todos", user];
+  return ["todos", user];
 }
 
 export function getToDoKey(id: string) {
-	return ["todo", id];
+  return ["todo", id];
 }
 
 export function getUsersKey() {
-	return ["users"];
+  return ["users"];
 }
 
 export function getUserKey(id: string) {
-	return ["users", id];
+  return ["users", id];
 }

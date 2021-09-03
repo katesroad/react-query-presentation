@@ -1,23 +1,22 @@
-import { Dispatch, ReactElement, SetStateAction } from 'react';
+import { Dispatch, ReactElement, SetStateAction } from "react";
 
 interface ElmProps {
-	className?: string;
+  className?: string;
 }
 
 export interface ModalProps {
-	children: ReactElement[] | ReactElement;
-	isOpen: boolean;
-	onDismiss?: () => void;
+  children: ReactElement[] | ReactElement;
+  isOpen: boolean;
+  onDismiss?: () => void;
 }
 
 export type ContextType = {
-	isOpen: boolean;
-	setIsOpen: Dispatch<SetStateAction<boolean>>;
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 export interface ModalHeaderProps extends ElmProps {
-	inline?: boolean;
+  inline?: boolean;
 }
 
 export interface ModalFooterProps extends ElmProps {}
-
