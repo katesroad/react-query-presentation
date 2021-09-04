@@ -6,14 +6,21 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { TodosService } from './todos.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
+import { QueryTodoDto } from './dto/query-todo.dto';
 
 @Controller('api/todos')
 export class TodosController {
   constructor(private readonly todosService: TodosService) {}
+
+  @Get()
+  findAll(@Query() queryTodoDto: QueryTodoDto) {
+    return this.todosService.findAll(queryTodoDto);
+  }
 
   @Post()
   create(@Body() createTodoDto: CreateTodoDto) {

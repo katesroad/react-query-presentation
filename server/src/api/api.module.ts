@@ -1,7 +1,7 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
 import { TodosModule } from './todos/todos.module';
-import { LoggerMiddleware } from '../shared/logger.middleware';
+import { LoggerMiddleware } from 'shared/logger.middleware';
 
 @Module({
   imports: [UsersModule, TodosModule],

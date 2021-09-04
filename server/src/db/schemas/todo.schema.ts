@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
+import { User } from '.';
 
 export type TodoDocument = Todo & Document;
 
@@ -17,7 +18,7 @@ export class Todo {
   @Prop({ required: true })
   description: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, type: Types.ObjectId, ref: User.name })
   user: string;
 }
 

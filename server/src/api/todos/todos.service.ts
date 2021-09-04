@@ -4,10 +4,31 @@ import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { TodoDocument, Todo } from 'db/schemas/todo.schema';
 import { InjectModel } from '@nestjs/mongoose';
+import { QueryTodoDto } from './dto/query-todo.dto';
+import { isEmpty } from 'lodash';
+import { User } from 'db/schemas';
 
 @Injectable()
 export class TodosService {
   constructor(@InjectModel(Todo.name) private todoModel: Model<TodoDocument>) {}
+
+  findAll(queryTodoDto: QueryTodoDto) {
+    let filter: null | QueryTodoDto = queryTodoDto;
+
+    if (isEmpty(queryTodoDto)) {
+      filter = null;
+    }
+
+    if (filter?.user === '') {
+      delete filter.user;
+    }
+
+    return this.todoModel
+      .find(filter, { v: 0 })
+      .populate('user')
+      .exec()
+      .then((docs) => docs.map((doc) => doc.toJSON()));
+  }
 
   create(createTodoDto: CreateTodoDto) {
     return this.todoModel.insertMany([createTodoDto]);

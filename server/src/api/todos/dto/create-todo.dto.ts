@@ -1,4 +1,4 @@
-import { IsBoolean, IsOptional, IsString } from "class-validator";
+import { IsBoolean, IsOptional, IsString } from 'class-validator';
 
 export class CreateTodoDto {
   @IsString()
@@ -6,7 +6,6 @@ export class CreateTodoDto {
 
   @IsString()
   description: string;
-
 
   @IsOptional()
   @IsBoolean()
