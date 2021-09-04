@@ -8,27 +8,24 @@ import {
   getTodos,
   updateTodo,
 } from "services/todos.api";
-import { ICreateTodo, ITodo } from "types/todo";
+import { ICreateTodo, ITodo, TodoQuery } from "types/todo";
 import { getToDoKey } from "./query-key";
 
-export function useGetTodos(user: string) {
-  const queryKey = getTodosKeys(user);
-  const queryFn = () => getTodos(user);
-  const conf = {
-    enabled: !!user,
-    retry: 1,
-  };
+export function useGetTodos(query: TodoQuery) {
+  const queryKey = getTodosKeys(query);
+  const queryFn = () => getTodos(query);
+  const conf = { retry: 1 };
 
   return useQuery(queryKey, queryFn, conf);
 }
 
-export function useCreateTodo(user: string) {
+export function useCreateTodo(todoOwner: string) {
   const queryFn = (data: ICreateTodo) => createTodo(data);
-  const queryKey = getTodosKeys(user);
+  const queryKey = getTodosKeys({ user: todoOwner });
 
   const queryClient = useQueryClient();
   const conf = {
-    enabled: !!user,
+    enabled: !!todoOwner,
     retry: 1,
     onSuccess: () => queryClient.prefetchQuery(queryKey),
     onError: () => {
@@ -46,20 +43,20 @@ export function useGetTodo(id?: string) {
   return useQuery(queryKey, queryFn, { enabled: !!id });
 }
 
-export function useUpdateTodo(todoUser: string) {
+export function useUpdateTodo(todoOwner: string) {
   const queryClient = useQueryClient();
   const queryFn = (newData: ITodo) => updateTodo(newData);
-  const queryKey = getTodosKeys(todoUser);
+  const queryKey = getTodosKeys({ user: todoOwner });
 
   return useMutation(queryFn, {
     onSuccess: () => queryClient.invalidateQueries(queryKey),
   });
 }
 
-export function useDeleteTodo(todoUser: string) {
+export function useDeleteTodo() {
   const queryFn = (id: string) => deleteTodo(id);
   const queryClient = useQueryClient();
-  const queryKey = getTodosKeys(todoUser);
+  const queryKey = getTodosKeys();
 
   return useMutation(queryFn, {
     onSuccess: () => queryClient.invalidateQueries(queryKey),

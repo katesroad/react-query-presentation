@@ -8,6 +8,10 @@ import { ITodo } from "types/todo";
 
 export const columns = [
   {
+    Header: "Owner",
+    accessor: (data: ITodo) => <p>{data.user?.name}</p>,
+  },
+  {
     Header: "title",
     accessor: (data: ITodo) => {
       const handleMouseOver = () => {
@@ -20,6 +24,10 @@ export const columns = [
         </Link>
       );
     },
+  },
+  {
+    Header: "description",
+    accessor: (data: ITodo) => <p>{data.description}</p>,
   },
   {
     Header: "Status",

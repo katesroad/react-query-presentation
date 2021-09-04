@@ -1,6 +1,6 @@
 import React from "react";
 import { useGetTodos } from "hooks/queries/todos.hooks";
-import { ITodo } from "types/todo";
+import { ITodo, TodoQuery } from "types/todo";
 import { Wrapper } from "components/TodoStats/styles";
 
 const Stats: React.FC<{ todos: ITodo[] }> = ({ todos }) => {
@@ -25,13 +25,11 @@ const Stats: React.FC<{ todos: ITodo[] }> = ({ todos }) => {
   );
 };
 
-const TodoStats: React.FC<{ user: string }> = ({ user }) => {
-  const { status, data: todos } = useGetTodos(user);
+const TodoStats: React.FC<TodoQuery> = ({ ...query }) => {
+  const { status, data: todos } = useGetTodos(query);
 
   const content = ["loading", "idel"].includes(status) ? (
-    user ? (
-      <p>Loading...</p>
-    ) : null
+    <p>Loading...</p>
   ) : status === "error" ? (
     <p>Failed to load todo</p>
   ) : (
@@ -41,7 +39,7 @@ const TodoStats: React.FC<{ user: string }> = ({ user }) => {
   return (
     <Wrapper className="card">
       <h4>Todo stats</h4>
-      {user ? content : <p>No user is selected</p>}
+      {content}
     </Wrapper>
   );
 };

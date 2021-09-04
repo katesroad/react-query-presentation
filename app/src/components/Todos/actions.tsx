@@ -14,8 +14,8 @@ export const Actions: React.FC<{ todo: ITodo }> = ({ todo }) => {
     setShowEditModal(false);
   }, []);
 
-  const updateMutation = useUpdateTodo(todo.user);
-  const deleteMutation = useDeleteTodo(todo.user);
+  const updateMutation = useUpdateTodo(todo.user._id);
+  const deleteMutation = useDeleteTodo();
 
   const handleClickEdit = () => {
     setShowEditModal(true);

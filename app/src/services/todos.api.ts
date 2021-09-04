@@ -1,9 +1,9 @@
-import { ICreateTodo, ITodo } from "types/todo";
+import { ICreateTodo, ITodo, TodoQuery } from "types/todo";
 import request from "services/request";
 
-export function getTodos(user: string) {
-  return request(`/users/${user}/todos`);
-}
+export const getTodos = (query: TodoQuery) => {
+  return request(`/todos`, { params: query });
+};
 
 export function createTodo(data: ICreateTodo) {
   return request.post(`/todos`, { data });

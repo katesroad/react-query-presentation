@@ -2,14 +2,11 @@ import { Wrapper } from "components/Todos/styles";
 import { useGetTodos } from "hooks/queries/todos.hooks";
 import * as React from "react";
 import { useTable } from "react-table";
-import { columns } from "./columns";
+import { TodoQuery } from "types/todo";
+import { columns } from "components/Todos/columns";
 
-interface TodosProps {
-  user: string;
-}
-
-const Todos: React.FC<TodosProps> = ({ user }) => {
-  const { status, data: todos } = useGetTodos(user);
+const Todos: React.FC<TodoQuery> = ({ ...query }) => {
+  const { status, data: todos } = useGetTodos(query);
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({
       columns,
@@ -65,12 +62,7 @@ const Todos: React.FC<TodosProps> = ({ user }) => {
       </div>
     );
 
-  return (
-    <Wrapper>
-      <h4>Todo List</h4>
-      {user ? content : <p>No user is selected</p>}
-    </Wrapper>
-  );
+  return <Wrapper>{content}</Wrapper>;
 };
 
 export default Todos;
