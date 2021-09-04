@@ -4,7 +4,7 @@ import Modal, {
   ModalCloseButton,
   ModalHeader,
 } from "components/Modal";
-import AddTodoForm from "components/Form/AddTodo";
+import AddTodoForm from "components/AdminScreen/Form/AddTodo";
 
 export const AddTodoBtn: React.FC<{ user: string }> = ({ user }) => {
   const [showModal, setShowModal] = React.useState<boolean>(false);

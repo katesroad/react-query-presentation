@@ -4,7 +4,7 @@ import Modal, {
   ModalCloseButton,
   ModalHeader,
 } from "components/Modal";
-import AddUserForm from "components/Form/AddUser";
+import AddUserForm from "components/AdminScreen/Form/AddUser";
 
 export const AddUserBtn: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);

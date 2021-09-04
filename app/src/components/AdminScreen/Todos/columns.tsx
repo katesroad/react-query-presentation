@@ -1,4 +1,4 @@
-import { Actions } from "components/Todos/actions";
+import { Actions } from "components/AdminScreen/Todos/actions";
 import { TodoStatus } from "components/TodoStatus";
 import { queryClient } from "context";
 import React from "react";

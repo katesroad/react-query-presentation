@@ -1,4 +1,4 @@
-import UpdateTodoForm from "components/Form/UpdateTodo";
+import UpdateTodoForm from "components/AdminScreen/Form/UpdateTodo";
 import Modal, {
   ModalBody,
   ModalCloseButton,

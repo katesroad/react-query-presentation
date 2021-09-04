@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetUsers } from "hooks/queries/users.hooks";
 import { IUser } from "types/users";
-import { FormField } from "../shared/FormField";
+import { FormField } from "components/shared/FormField";
 
 interface UserListProps {
   current: IUser | null;

@@ -1,9 +1,9 @@
-import { Wrapper } from "components/Todos/styles";
+import { Wrapper } from "components/AdminScreen/Todos/styles";
 import { useGetTodos } from "hooks/queries/todos.hooks";
 import * as React from "react";
 import { useTable } from "react-table";
 import { TodoQuery } from "types/todo";
-import { columns } from "components/Todos/columns";
+import { columns } from "components/AdminScreen/Todos/columns";
 
 const Todos: React.FC<TodoQuery> = ({ ...query }) => {
   const { status, data: todos } = useGetTodos(query);

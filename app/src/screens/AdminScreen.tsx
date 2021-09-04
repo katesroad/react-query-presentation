@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import TodoList from "components/Todos";
-import TodoStats from "components/TodoStats";
-import UserList from "components/UserList/index";
+import TodoList from "components/AdminScreen/Todos";
+import TodoStats from "components/AdminScreen/TodoStats";
+import UserList from "components/AdminScreen/UserList";
 import { IUser } from "types/users";
 import { AddUserBtn } from "components/AdminScreen/AddUserBtn";
 import { AddTodoBtn } from "components/AdminScreen/AddTodoBtn";

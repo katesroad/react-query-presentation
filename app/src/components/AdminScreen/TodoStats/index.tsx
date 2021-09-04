@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetTodos } from "hooks/queries/todos.hooks";
 import { ITodo, TodoQuery } from "types/todo";
-import { Wrapper } from "components/TodoStats/styles";
+import { Wrapper } from "components/AdminScreen/TodoStats/styles";
 
 const Stats: React.FC<{ todos: ITodo[] }> = ({ todos }) => {
   const total = todos?.length;
