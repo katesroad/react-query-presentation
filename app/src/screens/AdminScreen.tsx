@@ -38,7 +38,7 @@ export default function UsersDoTosScreen() {
       </div>
 
       <div className="current-user">
-        {user?.name && <h2>{user.name}</h2>}
+        <h2>{user?.name ?? "All Todos"}</h2>
         <span className="btn-group">
           {user && <AddTodoBtn user={user?._id ?? ""} />}
         </span>

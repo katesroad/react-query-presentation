@@ -1,9 +1,7 @@
 import React from "react";
 import { useCreateTodo } from "hooks/queries/todos.hooks";
-import { ITodo } from "types/todo";
 import TodoForm from "./TodoForm";
-
-type TodoData = Omit<ITodo, "user" | "_id">;
+import { ITodoData } from "types/todo";
 
 const initialValues = {
   title: "",
@@ -19,7 +17,7 @@ interface AddTodoFormProps {
 const AddTodoForm: React.FC<AddTodoFormProps> = ({ user, onSuccess }) => {
   const { status, mutate: onSubmit } = useCreateTodo(user);
 
-  const handleSubmit = (data: TodoData) => {
+  const handleSubmit = (data: ITodoData) => {
     onSubmit({ ...data, user });
   };
 

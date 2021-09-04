@@ -43,13 +43,16 @@ export function useGetTodo(id?: string) {
   return useQuery(queryKey, queryFn, { enabled: !!id });
 }
 
-export function useUpdateTodo(todoOwner: string) {
+export function useUpdateTodo() {
   const queryClient = useQueryClient();
   const queryFn = (newData: ITodo) => updateTodo(newData);
-  const queryKey = getTodosKeys({ user: todoOwner });
+  const queryKey = getTodosKeys();
 
   return useMutation(queryFn, {
-    onSuccess: () => queryClient.invalidateQueries(queryKey),
+    onSuccess: (data: ITodo) => {
+      queryClient.invalidateQueries(queryKey);
+      queryClient.invalidateQueries(getToDoKey(data._id));
+    },
   });
 }
 

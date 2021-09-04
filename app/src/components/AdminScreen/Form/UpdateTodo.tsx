@@ -12,9 +12,7 @@ interface UpdateTodoFormProps {
 const UpdateTodoForm: React.FC<UpdateTodoFormProps> = ({ id, onSuccess }) => {
   const { status, data: todo } = useGetTodo(id);
 
-  const { mutate: onSubmit, status: updateStatus } = useUpdateTodo(
-    todo?.user ?? ""
-  );
+  const { mutate: onSubmit, status: updateStatus } = useUpdateTodo();
   const handleSubmit = (data: ITodoData) => {
     onSubmit({ ...todo, ...data });
   };
