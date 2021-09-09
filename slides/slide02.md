@@ -3,28 +3,45 @@
 
 ## jQuery -> React
 
-
-- Use jQuery to implements user interaction
-- Some template solutions at frontend side
-	- ejs
-	- handbar.js
-
+- Render content at backend side, Python Jinjia, EJS
+- Render content at frontend side
+	- Contact strings and append the string to DOM
+	- Handbar.js
 
 
 ## React
 
-- Facebook created React, a data driven UI solution
-	- The props(interface) gotten from parent component
-	- The internal state defined inside the component
-- Problem 1: over usage of props drilling
-	- What if a component wants to access component state 
-		- defined in another sibling componnet
-		- or its ancessor component
-	- Solution: store the state to global
-		- Define context provider
-		- Use Redux/Mobx, etc.
-		- Component composition
+- Facebook open sourced React, a data driven, component based UI solution
 
+`UI = f(props, state)`
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+![siblings](./pictures/siblings.png)
+
+<br>
+<br>
+<br>
+
+**What if a component wants to access its sibling component's data**
+
+- Problem 1: over usage of props drilling
+	- defined in another sibling componnet
+	- or its ancessor component
+
+
+<br>
+<br>
+<br>
+<br>
+
+- Solution: store the state to global
+	- Define context provider
+	- Use Redux/Mobx, etc.
 
 
 **Define Context provider**
@@ -36,16 +53,8 @@
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
 
 **Use Redux/Mobx**
 
-![Redux solution](./pictures/global.02.png);
-
-
+![Redux solution](./pictures/global.02.png)
+![Redux Solution-2](./pictures/global.05.png)

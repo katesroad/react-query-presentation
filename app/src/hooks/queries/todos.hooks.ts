@@ -53,6 +53,10 @@ export function useUpdateTodo() {
       queryClient.invalidateQueries(queryKey);
       queryClient.invalidateQueries(getToDoKey(data._id));
     },
+    onError: () => {
+
+    },
+    onSettled: ()=> {}
   });
 }
 
