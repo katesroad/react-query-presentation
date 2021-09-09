@@ -7,6 +7,7 @@ import { getUser } from "services/users.api";
 
 export const useGetUsers = () => {
   const queryKey = getUsersKey();
+  
   return useQuery(queryKey, getUsers, {
     staleTime: 30 * 60 * 1000,
   });
