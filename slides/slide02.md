@@ -13,12 +13,8 @@
 
 - Facebook open sourced React, a data driven, component based UI solution
 
-`UI = f(props, state)`
+**component UI = f(props, state)**
 
-	<br>
-	<br>
-	<br>
-	<br>
 
 
 ![siblings](./pictures/siblings.png)
